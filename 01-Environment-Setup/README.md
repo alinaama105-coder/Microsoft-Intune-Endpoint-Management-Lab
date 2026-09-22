@@ -42,9 +42,3 @@ This stage establishes a cloud-based Windows 11 endpoint that will be used for h
 - Enroll the Windows 11 VM into Microsoft Intune
 - Verify successful device enrollment
 - Begin device compliance and configuration testing
-
-## Security Notes
-
-The lab is being kept separate from production devices. Future Intune policies will be assigned only to dedicated lab users and devices rather than to all users or all devices.
-
-Public IP addresses, credentials, tenant identifiers and other sensitive information will not be published in this repository.
