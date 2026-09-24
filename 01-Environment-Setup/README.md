@@ -1,10 +1,10 @@
-# 01 - Microsoft Intune Environment Setup
+01 - Microsoft Intune Environment Setup
 
-## Overview
+Overview
 
 This stage establishes a cloud-based Windows 11 endpoint that will be used for hands-on Microsoft Intune administration and testing.
 
-## Environment
+Environment
 
 - Microsoft Azure
 - Microsoft Entra ID
@@ -13,7 +13,7 @@ This stage establishes a cloud-based Windows 11 endpoint that will be used for h
 - Azure Virtual Machine
 - Remote Desktop Protocol (RDP)
 
-## Azure VM Configuration
+Azure VM Configuration
 
 - VM Name: Intune-Win11-lab
 - Operating System: Windows 11 Pro 25H2
@@ -24,7 +24,7 @@ This stage establishes a cloud-based Windows 11 endpoint that will be used for h
 - Secure Boot: Enabled
 - vTPM: Enabled
 
-## Work Completed
+Work Completed
 
 - Created a dedicated Azure resource group for the Intune lab
 - Deployed a Windows 11 Pro Azure virtual machine
@@ -35,7 +35,7 @@ This stage establishes a cloud-based Windows 11 endpoint that will be used for h
 - Reviewed Microsoft Entra ID permissions
 - Identified that the lab account requires the Intune Administrator role
 
-## Next Steps
+Next Steps
 
 - Assign the Intune Administrator role to the lab account
 - Create a dedicated Intune lab device group
