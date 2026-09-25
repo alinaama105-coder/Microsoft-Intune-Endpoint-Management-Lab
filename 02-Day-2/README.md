@@ -12,10 +12,6 @@ I started the Microsoft Intune Plan 1 trial sign-up for my separate lab environm
 
 ![Intune free trial sign-up](01-Intune-Free-Trial-Sign-Up.png)
 
-Lab account:
-
-`AliNaama@AliNaamaLab155.onmicrosoft.com`
-
 What I learned: Using a separate lab account means I can practise without affecting a real business environment.
 
 2. Azure Resource Group and Windows VM
