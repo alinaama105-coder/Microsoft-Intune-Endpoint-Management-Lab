@@ -1,14 +1,16 @@
-Day 2 - Azure Windows 11 VM and Intune Enrollment Troubleshooting
+Day 2 - Azure Windows VM and Intune Enrollment Troubleshooting
 
 Overview
 
-Today I continued my Microsoft Intune lab. I created a Windows VM in Azure, connected to it remotely and started preparing it for Intune.
+Today I continued my Microsoft Intune lab. I worked on the Windows VM in Azure, connected to it remotely and started preparing it for Intune.
 
-I also started practising some PowerShell commands. The aim was to understand what each command does and use them to check the VM while I was setting it up.
+I also started practising PowerShell. I used the commands to check the VM and help me understand what was working while I was troubleshooting.
 
-1. Created a Separate Lab Environment
+1. Intune Trial and Lab Environment
 
-I used a dedicated Microsoft/Azure lab environment so I could safely test Intune without affecting a production or business environment.
+I started the Microsoft Intune Plan 1 trial sign-up for my separate lab environment.
+
+![Intune free trial sign-up](01-Intune-Free-Trial-Sign-Up.png)
 
 Lab account:
 
@@ -16,92 +18,119 @@ Lab account:
 
 What I learned: Using a separate lab account means I can practise without affecting a real business environment.
 
-2. Created the Azure Resource Group
+2. Azure Resource Group and Windows VM
 
-I created:
+I used the Azure Resource Group:
 
 `RG-Intune-Lab`
 
-This keeps the resources associated with the Intune project organised in one location.
-
-What I learned: A Resource Group helps me keep the Azure resources for this lab together.
-
-3. Created the Windows Test VM
-
-I created the Azure VM:
+and created the VM:
 
 `Intune-Win11-lab`
 
-The VM acts as the Windows endpoint for the Intune project.
+The VM is the Windows test device I am using for this Intune project.
 
-Configuration included:
+My first deployment attempt had a region restriction. After changing the Azure region, the deployment completed.
 
-- Windows 11
-- Standard SSD
-- Boot diagnostics enabled
-- Auto-shutdown enabled
-- No unnecessary extensions
-- No additional data disks
+![Azure VM deployment complete](02-Azure-VM-Deployment-Complete.png)
 
-I started with a PowerShell command to check basic information about the VM:
+I then checked the VM from the Azure portal.
+
+![Intune Windows VM overview](03-Intune-Win11-Lab-VM-Overview.png)
+
+What I learned: If an Azure deployment fails, the problem is not always the VM settings. The selected Azure region can also be the cause.
+
+3. First PowerShell Check
+
+I started learning PowerShell by checking basic information about the VM.
 
 ```powershell
 Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsArchitecture, CsName
 ```
 
-Purpose: Check the Windows version, system type and computer name.
+My first attempt failed because I entered the PowerShell command in Command Prompt.
 
-My first attempt failed because I entered the command in Command Prompt. I then learned that `Get-ComputerInfo` is a PowerShell command, switched to PowerShell and tried it again successfully.
+![PowerShell command failed in CMD](01-PowerShell-Command-Failed-In-CMD.png)
+
+I learned that `Get-ComputerInfo` is a PowerShell command, switched to PowerShell and ran it again successfully.
+
+![PowerShell system information success](02-PowerShell-System-Information-Success.png)
+
+Purpose: Check the Windows information, system type and computer name.
 
 What I learned: Command Prompt and PowerShell are different. Some commands only work in PowerShell.
 
-4. Troubleshot the Azure VM Deployment
+4. RDP Connection Troubleshooting
 
-My first Azure VM deployment did not work because of a region restriction. I changed the Azure region and tried the deployment again, which worked.
+I tried connecting to the VM using Windows App / Remote Desktop.
 
-What I learned: If an Azure deployment fails, the problem is not always the VM settings. The selected Azure region can also be the cause.
-
-5. Troubleshot Remote Access and Networking
-
-When attempting to connect through Remote Desktop, using:
+At first I used the VM name:
 
 `Intune-Win11-lab`
 
-did not work because the VM name could not be resolved from the remote client.
+The connection failed because the computer name could not be found.
 
-I returned to Azure, obtained the appropriate connection information and configured the RDP connection using the VM's public IP.
+![RDP connection failed using VM name](04-RDP-Connection-Failed-Using-VM-Name.png)
 
-I used PowerShell to look at the VM's network settings:
+I went back to Azure and used the VM connection information instead.
+
+![RDP public IP configured](05-RDP-Public-IP-Configured.png)
+
+I also encountered a credential error while testing the RDP connection.
+
+![RDP credentials troubleshooting](06-RDP-Credentials-Troubleshooting.png)
+
+I returned to the Azure RDP connection page to check the connection details and username.
+
+![Azure RDP connection details](07-Windows-11-VM-Successfully-Accessed-RDP.png)
+
+What I learned: When RDP does not work, I need to check the address being used and the login details instead of repeatedly trying the same connection.
+
+5. Checking the VM Network
+
+After getting access to the VM, I used PowerShell to look at its network settings.
 
 ```powershell
 Get-NetIPConfiguration
 ```
 
+![PowerShell network configuration](03-PowerShell-Network-Configuration.png)
+
 This showed me the Ethernet connection, private IP address, gateway and DNS server.
 
-I then checked whether the network adapter was working:
+I then checked whether the network adapter was active.
 
 ```powershell
 Get-NetAdapter | Select-Object Name, InterfaceDescription, Status, LinkSpeed
 ```
 
-The network adapter showed a status of `Up`, which meant it was active.
+![Azure VM network adapter status](06-Azure-VM-Network-Adapter-Status.png)
 
-What I learned: I can use PowerShell to check both the network settings and whether the network adapter is active.
+The network adapter showed `Up`.
 
-6. Verified Microsoft Cloud Connectivity
+What I learned: I can use PowerShell to check the network settings and whether the network adapter is working.
 
-I then tested whether the VM could connect to Microsoft's sign-in service on port 443:
+6. Checking Microsoft Connectivity
+
+I tested whether the VM could connect to Microsoft's sign-in service on port 443.
 
 ```powershell
 Test-NetConnection login.microsoftonline.com -Port 443
 ```
 
-I also used PowerShell to check if DNS could find the Microsoft sign-in address:
+![Microsoft login port 443 connectivity](04-Microsoft-Login-Port-443-Connectivity.png)
+
+The test returned:
+
+`TcpTestSucceeded : True`
+
+I also checked whether DNS could find the Microsoft sign-in address.
 
 ```powershell
 Resolve-DnsName login.microsoftonline.com
 ```
+
+![Microsoft login DNS resolution](05-Microsoft-Login-DNS-Resolution.png)
 
 The command returned Microsoft addresses, so the DNS lookup was working.
 
@@ -113,71 +142,73 @@ Inside the Windows VM I opened:
 
 `Settings > Accounts > Access work or school`
 
-and connected:
+I connected my lab account.
 
-`AliNaama@AliNaamaLab155.onmicrosoft.com`
+![Work or school account connected](08-Work-School-Account-Connected.png)
 
 What I learned: Connecting the work account does not automatically mean the device is fully enrolled in Intune.
 
-8. Attempted Intune Device Enrollment
+8. Intune Enrollment Attempt
 
-I attempted to enroll the Windows endpoint into device management.
+I then attempted to enroll the Windows VM into device management.
 
-Windows returned an MDM discovery error because it could not automatically discover the required management endpoint.
+Windows could not automatically discover the management endpoint.
+
+![Intune MDM auto-discovery failure](09-Intune-MDM-Auto-Discovery-Failure.png)
 
 Instead of changing random settings, I checked what was working first.
 
-I used PowerShell to test whether the VM could reach the Intune enrollment service on port 443:
+I tested whether the VM could reach the Intune enrollment service on port 443.
 
 ```powershell
 Test-NetConnection enrollment.manage.microsoft.com -Port 443
 ```
 
-The result returned:
+![Intune enrollment port 443 connectivity](07-Intune-Enrollment-Port-443-Connectivity.png)
+
+The result showed:
 
 ```text
 RemotePort       : 443
 TcpTestSucceeded : True
 ```
 
-The result was `True`, so the VM could reach the Intune enrollment service on port 443.
-
 What I learned: The connection test worked, so I knew the VM could reach the Intune service. I then continued checking the Intune licence and account.
 
-9. Investigated Intune Licensing
+9. Intune Licence and Account Review
 
-I checked the Microsoft 365 administration environment and found that an Intune licence was not yet available for assignment to the lab user.
+I checked the Microsoft account and found that the account was still under review.
 
-Further investigation showed that the Microsoft account/subscription was still under review.
+![Microsoft tenant account under review](10-Microsoft-Tenant-Account-Under-Review.png)
 
 I stopped changing settings because the Intune licence was still not available.
 
 What I learned: Azure credit and an Intune licence are separate. Having Azure credit does not automatically give me Intune.
 
-10. Day 2 Troubleshooting Outcome
+10. Day 2 Outcome
 
 By the end of Day 2 I had:
 
-- Created the Azure Windows test endpoint
-- Established RDP access
-- Verified the endpoint using PowerShell
-- Inspected IP and adapter configuration
-- Verified Microsoft DNS resolution
-- Verified HTTPS connectivity to Microsoft authentication services
+- Created and checked the Azure Windows test VM
+- Worked through the RDP connection problems
+- Started learning PowerShell commands
+- Checked the VM system information
+- Checked the IP, gateway and DNS settings
+- Checked the network adapter
+- Tested Microsoft sign-in connectivity
+- Tested DNS resolution
 - Connected the work account
 - Attempted Intune enrollment
-- Reproduced the MDM discovery problem
-- Verified TCP 443 connectivity to the Intune enrollment service
-- Identified licensing/account review as the current blocker
-
-I stopped at this point because the Intune licence/account review still needed to be completed before I could continue with enrollment.
+- Recorded the MDM discovery error
+- Tested the Intune enrollment connection on port 443
+- Found that the Microsoft account/licence review was still the blocker
 
 Day 2 Status
 
 Azure VM: Operational  
 RDP: Working  
-PowerShell validation: Completed  
-Microsoft connectivity: Verified  
+PowerShell practice: Completed  
+Microsoft connectivity: Working  
 Work account: Connected  
 Intune enrollment: Pending  
 Microsoft account/licensing review: Pending
