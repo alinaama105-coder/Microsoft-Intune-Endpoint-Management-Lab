@@ -2,9 +2,9 @@ Day 2 - Azure Windows 11 VM and Intune Enrollment Troubleshooting
 
 Overview
 
-Today I continued building my Microsoft Intune lab by creating a dedicated Windows test endpoint in Azure, connecting to it remotely, preparing it for Intune management, and troubleshooting the issues encountered during enrollment.
+Today I continued my Microsoft Intune lab. I created a Windows VM in Azure, connected to it remotely and started preparing it for Intune.
 
-I also used PowerShell as part of the Day 2 validation and troubleshooting process to inspect the endpoint, verify networking, test Microsoft cloud connectivity and investigate the Intune enrollment issue.
+I also started practising some PowerShell commands. The aim was to understand what each command does and use them to check the VM while I was setting it up.
 
 1. Created a Separate Lab Environment
 
@@ -14,7 +14,7 @@ Lab account:
 
 `AliNaama@AliNaamaLab155.onmicrosoft.com`
 
-What I learned: A dedicated tenant provides a controlled environment where I can practise endpoint management without affecting production users or devices.
+What I learned: Using a separate lab account means I can practise without affecting a real business environment.
 
 2. Created the Azure Resource Group
 
@@ -24,7 +24,7 @@ I created:
 
 This keeps the resources associated with the Intune project organised in one location.
 
-What I learned: Azure Resource Groups provide a logical way of organising and managing related cloud resources.
+What I learned: A Resource Group helps me keep the Azure resources for this lab together.
 
 3. Created the Windows Test VM
 
@@ -43,25 +43,23 @@ Configuration included:
 - No unnecessary extensions
 - No additional data disks
 
-As part of Day 2 validation, I used PowerShell to retrieve key system information:
+I started with a PowerShell command to check basic information about the VM:
 
 ```powershell
 Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsArchitecture, CsName
 ```
 
-Purpose: Verify the operating system information, architecture and computer name of the endpoint.
+Purpose: Check the Windows version, system type and computer name.
 
-My first attempt was made from Command Prompt and failed because `Get-ComputerInfo` is a PowerShell cmdlet. I identified the incorrect command-line environment, switched to PowerShell and successfully executed the command.
+My first attempt failed because I entered the command in Command Prompt. I then learned that `Get-ComputerInfo` is a PowerShell command, switched to PowerShell and tried it again successfully.
 
-What I learned: Windows administration commands can depend on the shell being used. PowerShell cmdlets cannot normally be executed directly from standard Command Prompt.
+What I learned: Command Prompt and PowerShell are different. Some commands only work in PowerShell.
 
 4. Troubleshot the Azure VM Deployment
 
-The initial Azure deployment encountered a regional availability/eligibility issue.
+My first Azure VM deployment did not work because of a region restriction. I changed the Azure region and tried the deployment again, which worked.
 
-After identifying that the problem was related to the Azure region rather than the VM configuration itself, I changed the deployment location and successfully deployed the VM.
-
-What I learned: Azure deployment failures are not always caused by incorrect VM configuration. Subscription eligibility and regional availability can also affect resource deployment.
+What I learned: If an Azure deployment fails, the problem is not always the VM settings. The selected Azure region can also be the cause.
 
 5. Troubleshot Remote Access and Networking
 
@@ -73,41 +71,41 @@ did not work because the VM name could not be resolved from the remote client.
 
 I returned to Azure, obtained the appropriate connection information and configured the RDP connection using the VM's public IP.
 
-I then used PowerShell inside the VM to inspect its network configuration:
+I used PowerShell to look at the VM's network settings:
 
 ```powershell
 Get-NetIPConfiguration
 ```
 
-This showed the active Ethernet interface, private IPv4 address, default gateway and DNS server.
+This showed me the Ethernet connection, private IP address, gateway and DNS server.
 
-I also checked the virtual network adapter:
+I then checked whether the network adapter was working:
 
 ```powershell
 Get-NetAdapter | Select-Object Name, InterfaceDescription, Status, LinkSpeed
 ```
 
-The Microsoft Hyper-V Network Adapter reported a status of `Up`.
+The network adapter showed a status of `Up`, which meant it was active.
 
-What I learned: `Get-NetIPConfiguration` and `Get-NetAdapter` provide different levels of network troubleshooting information. One exposes IP configuration while the other helps verify the state of the network interface.
+What I learned: I can use PowerShell to check both the network settings and whether the network adapter is active.
 
 6. Verified Microsoft Cloud Connectivity
 
-Because the endpoint will communicate with Microsoft cloud services, I tested HTTPS connectivity to Microsoft's authentication infrastructure:
+I then tested whether the VM could connect to Microsoft's sign-in service on port 443:
 
 ```powershell
 Test-NetConnection login.microsoftonline.com -Port 443
 ```
 
-I then tested DNS resolution:
+I also used PowerShell to check if DNS could find the Microsoft sign-in address:
 
 ```powershell
 Resolve-DnsName login.microsoftonline.com
 ```
 
-The DNS query successfully returned Microsoft service records and IPv4/IPv6 addresses.
+The command returned Microsoft addresses, so the DNS lookup was working.
 
-What I learned: Successful DNS resolution and TCP 443 connectivity help establish that the endpoint can locate and communicate with Microsoft's authentication services.
+What I learned: I learned how to check if DNS is working and whether the VM can connect to a Microsoft service.
 
 7. Connected the Work Account
 
@@ -119,7 +117,7 @@ and connected:
 
 `AliNaama@AliNaamaLab155.onmicrosoft.com`
 
-What I learned: Connecting a work account establishes a relationship with the Microsoft organisation, but it does not by itself prove that the endpoint is fully enrolled and managed by Intune.
+What I learned: Connecting the work account does not automatically mean the device is fully enrolled in Intune.
 
 8. Attempted Intune Device Enrollment
 
@@ -127,9 +125,9 @@ I attempted to enroll the Windows endpoint into device management.
 
 Windows returned an MDM discovery error because it could not automatically discover the required management endpoint.
 
-Rather than manually forcing configuration changes, I investigated the environment.
+Instead of changing random settings, I checked what was working first.
 
-As part of the troubleshooting process, I tested connectivity directly to the Microsoft Intune enrollment service:
+I used PowerShell to test whether the VM could reach the Intune enrollment service on port 443:
 
 ```powershell
 Test-NetConnection enrollment.manage.microsoft.com -Port 443
@@ -142,9 +140,9 @@ RemotePort       : 443
 TcpTestSucceeded : True
 ```
 
-This confirmed that the VM could establish basic HTTPS connectivity to the Intune enrollment endpoint.
+The result was `True`, so the VM could reach the Intune enrollment service on port 443.
 
-What I learned: The successful TCP test helped narrow the investigation. The enrollment failure was less likely to be caused by a simple TCP 443 connectivity problem, so I continued investigating the Intune configuration and licensing.
+What I learned: The connection test worked, so I knew the VM could reach the Intune service. I then continued checking the Intune licence and account.
 
 9. Investigated Intune Licensing
 
@@ -152,9 +150,9 @@ I checked the Microsoft 365 administration environment and found that an Intune 
 
 Further investigation showed that the Microsoft account/subscription was still under review.
 
-This explained why continuing to change endpoint settings would not have been an appropriate troubleshooting step.
+I stopped changing settings because the Intune licence was still not available.
 
-What I learned: Azure services and Microsoft Intune licensing are separate. Having Azure credit and a functioning Azure VM does not automatically provide an active Intune licence.
+What I learned: Azure credit and an Intune licence are separate. Having Azure credit does not automatically give me Intune.
 
 10. Day 2 Troubleshooting Outcome
 
@@ -172,7 +170,7 @@ By the end of Day 2 I had:
 - Verified TCP 443 connectivity to the Intune enrollment service
 - Identified licensing/account review as the current blocker
 
-Rather than repeatedly attempting enrollment or changing unrelated settings, I stopped troubleshooting at the point where the external licensing dependency had been identified.
+I stopped at this point because the Intune licence/account review still needed to be completed before I could continue with enrollment.
 
 Day 2 Status
 
