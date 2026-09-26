@@ -42,3 +42,12 @@ Next Steps
 - Enroll the Windows 11 VM into Microsoft Intune
 - Verify successful device enrollment
 - Begin device compliance and configuration testing
+
+References and Further Reading
+
+Official Microsoft documentation relevant to the technologies and procedures demonstrated in this lab:
+
+- [Azure Windows Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/)
+- [Trusted Launch for Azure virtual machines](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch)
+- [Role-based access control for Microsoft Intune](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/role-based-access-control)
+
