@@ -260,3 +260,16 @@ Intune enrollment: Pending
 Intune licensing/management access: Pending
 
 The Entra ID foundation is now prepared and independently verified. The next stage will continue with Microsoft Intune enrollment and policy configuration once the required Intune management access is available.
+
+References and Further Reading
+
+The commands and concepts used in this lab were supported by official Microsoft Learn documentation:
+
+- [Microsoft Graph PowerShell documentation](https://learn.microsoft.com/en-us/powershell/microsoftgraph/)
+- [Microsoft Graph PowerShell authentication commands - Connect-MgGraph and Get-MgContext](https://learn.microsoft.com/powershell/microsoftgraph/authentication-commands)
+- [Get-MgUser](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguser?view=graph-powershell-1.0)
+- [Get-MgGroup](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/get-mggroup?view=graph-powershell-1.0)
+- [Get-MgGroupMember](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.groups/get-mggroupmember?view=graph-powershell-1.0)
+- [Get-MgDevice](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgdevice?view=graph-powershell-1.0)
+- [Build PowerShell scripts with Microsoft Graph](https://learn.microsoft.com/en-us/graph/tutorials/powershell)
+
