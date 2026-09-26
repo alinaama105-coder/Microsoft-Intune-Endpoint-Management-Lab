@@ -14,11 +14,11 @@ I created a dedicated lab user called:
 
 This account will be used later for user-based Intune assignments, configuration profiles and application testing.
 
-![Create Daniel Carter user](../01-create-daniel-carter-user.png)
+![Create Daniel Carter user](01-create-daniel-carter-user.png)
 
 The user was created successfully in Microsoft Entra ID.
 
-![Daniel Carter user created](../02-daniel-carter-user-created.png)
+![Daniel Carter user created](02-daniel-carter-user-created.png)
 
 What I learned: Using a dedicated test account keeps Intune testing separate from the administrator account and gives me a realistic user for policy assignments.
 
@@ -28,21 +28,21 @@ I created a dedicated security group:
 
 `SG-Intune-IT-Users`
 
-![Create Intune IT users group](../03-create-intune-it-users-group.png)
+![Create Intune IT users group](03-create-intune-it-users-group.png)
 
 The group was created as an assigned security group.
 
-![Intune IT users group created](../04-intune-it-users-group-created.png)
+![Intune IT users group created](04-intune-it-users-group-created.png)
 
 I then added Daniel Carter to the group.
 
-![Add Daniel Carter to user group](../05-add-daniel-carter-to-user-group.png)
+![Add Daniel Carter to user group](05-add-daniel-carter-to-user-group.png)
 
-![Daniel Carter selected for user group](../06-daniel-carter-selected-for-user-group.png)
+![Daniel Carter selected for user group](06-daniel-carter-selected-for-user-group.png)
 
 The membership was confirmed in Entra ID.
 
-![Daniel Carter user group member](../07-daniel-carter-user-group-member.png)
+![Daniel Carter user group member](07-daniel-carter-user-group-member.png)
 
 What I learned: Separate security groups allow Intune policies and applications to be targeted at specific users instead of assigning everything to the whole tenant.
 
@@ -52,15 +52,15 @@ I created a second security group for Windows devices:
 
 `SG-Intune-IT-Devices`
 
-![Create Intune IT devices group](../08-create-intune-it-devices-group.png)
+![Create Intune IT devices group](08-create-intune-it-devices-group.png)
 
 The device group was created successfully.
 
-![Intune device group created](../09-intune-device-group-created.png)
+![Intune device group created](09-intune-device-group-created.png)
 
 I checked both dedicated Intune groups together.
 
-![Intune user and device security groups](../10-intune-user-and-device-security-groups.png)
+![Intune user and device security groups](10-intune-user-and-device-security-groups.png)
 
 What I learned: Keeping user and device assignments separate makes the lab easier to manage and reflects how endpoint policies can be targeted in a structured environment.
 
@@ -68,7 +68,7 @@ What I learned: Keeping user and device assignments separate makes the lab easie
 
 I checked the Windows 11 lab device in Microsoft Entra ID before Intune enrollment.
 
-![Windows device before Intune enrollment](../11-windows-device-before-intune-enrollment.png)
+![Windows device before Intune enrollment](11-windows-device-before-intune-enrollment.png)
 
 At this stage the device was visible in Entra ID but was not yet managed by Intune.
 
@@ -80,23 +80,23 @@ I opened the dedicated device group:
 
 `SG-Intune-IT-Devices`
 
-![Open Intune IT devices group](../12-open-intune-it-devices-group.png)
+![Open Intune IT devices group](12-open-intune-it-devices-group.png)
 
 I then added the Windows 11 lab device.
 
-![Add Windows device to device group](../13-add-windows-device-to-device-group.png)
+![Add Windows device to device group](13-add-windows-device-to-device-group.png)
 
 The device was selected for membership.
 
-![Windows device selected for device group](../14-windows-device-selected-for-device-group.png)
+![Windows device selected for device group](14-windows-device-selected-for-device-group.png)
 
 I checked the group members after the change.
 
-![Windows device group members](../15-windows-device-group-members.png)
+![Windows device group members](15-windows-device-group-members.png)
 
 The Windows device membership was confirmed.
 
-![Windows device group member confirmed](../16-windows-device-group-member-confirmed.png)
+![Windows device group member confirmed](16-windows-device-group-member-confirmed.png)
 
 What I learned: Device groups give me a controlled target for future Intune compliance, configuration and endpoint security policies.
 
@@ -106,11 +106,11 @@ After preparing the Entra ID objects through the portal, I wanted to verify them
 
 My first Microsoft Graph command was not available in the original PowerShell environment.
 
-![Graph module initial error](../01-Graph-Module-Initial-Error.png)
+![Graph module initial error](01-Graph-Module-Initial-Error.png)
 
 I checked and worked through the Microsoft Graph module installation.
 
-![Graph module troubleshooting](../02-Graph-Module-Troubleshooting.png)
+![Graph module troubleshooting](02-Graph-Module-Troubleshooting.png)
 
 Rather than hiding the failed attempts, I kept them as evidence of the troubleshooting process.
 
@@ -124,7 +124,7 @@ I installed PowerShell 7 and verified the PowerShell version before continuing w
 $PSVersionTable
 ```
 
-![PowerShell version verification](../03-PowerShell-Version-Verification.png)
+![PowerShell version verification](03-PowerShell-Version-Verification.png)
 
 What I learned: Checking the shell version is useful when troubleshooting module compatibility and authentication behaviour.
 
@@ -138,7 +138,7 @@ Connect-MgGraph -Scopes "User.Read.All","Group.Read.All","Device.Read.All"
 
 The connection completed successfully.
 
-![Microsoft Graph connected](../04-Microsoft-Graph-Connected.png)
+![Microsoft Graph connected](04-Microsoft-Graph-Connected.png)
 
 9. Verifying the Microsoft Graph Context
 
@@ -148,7 +148,7 @@ I checked the active Microsoft Graph session.
 Get-MgContext
 ```
 
-![Graph context verified](../05-Graph-Context-Verified.png)
+![Graph context verified](05-Graph-Context-Verified.png)
 
 This confirmed that Microsoft Graph was connected to the lab tenant using the expected account and delegated permissions.
 
@@ -162,7 +162,7 @@ I queried Microsoft Entra ID for Daniel Carter.
 Get-MgUser -Filter "displayName eq 'daniel carter'" | Select-Object DisplayName,UserPrincipalName,Id
 ```
 
-![Daniel Carter user verified](../06-Daniel-Carter-User-Verified.png)
+![Daniel Carter user verified](06-Daniel-Carter-User-Verified.png)
 
 The query returned the user successfully.
 
@@ -176,7 +176,7 @@ I queried the dedicated Intune security groups.
 Get-MgGroup -Filter "startsWith(displayName,'SG-Intune')" | Select-Object DisplayName,Id
 ```
 
-![Intune security groups verified](../07-Intune-Security-Groups-Verified.png)
+![Intune security groups verified](07-Intune-Security-Groups-Verified.png)
 
 Both groups were returned:
 
@@ -193,7 +193,7 @@ I queried the Windows 11 lab device directly from Microsoft Graph.
 Get-MgDevice -Filter "displayName eq 'Intune-Win11-la'" | Select-Object DisplayName,OperatingSystem,OperatingSystemVersion,TrustType,AccountEnabled,Id
 ```
 
-![Entra device verified](../08-Entra-Device-Verified.png)
+![Entra device verified](08-Entra-Device-Verified.png)
 
 The query confirmed the Windows operating system, OS version, enabled state, device object ID and:
 
@@ -209,7 +209,7 @@ I verified that Daniel Carter was a member of the dedicated Intune user group.
 Get-MgGroupMember -GroupId (Get-MgGroup -Filter "displayName eq 'SG-Intune-IT-Users'").Id | Select-Object Id
 ```
 
-![User group membership verified](../09-User-Group-Membership-Verified.png)
+![User group membership verified](09-User-Group-Membership-Verified.png)
 
 The returned member object matched the Daniel Carter account created earlier.
 
@@ -217,7 +217,7 @@ The returned member object matched the Daniel Carter account created earlier.
 
 I also verified the Windows device membership in the dedicated Intune device group.
 
-![Device group membership verified](../10-Device-Group-Membership-Verified.png)
+![Device group membership verified](10-Device-Group-Membership-Verified.png)
 
 This confirmed through Microsoft Graph that the device was correctly positioned for future device-based Intune assignments.
 
