@@ -208,3 +208,13 @@ Microsoft connectivity: Working
 Work account: Connected  
 Intune enrollment: Pending  
 Microsoft account/licensing review: Pending
+
+References and Further Reading
+
+Official Microsoft documentation relevant to the technologies and procedures demonstrated in this lab:
+
+- [Windows device enrollment in Microsoft Intune](https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/deployment-guide-enrollment-windows)
+- [Automatic MDM enrollment](https://learn.microsoft.com/en-us/windows/client-management/azure-ad-and-microsoft-intune-automatic-mdm-enrollment-in-the-new-portal)
+- [Test-NetConnection](https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection)
+- [Troubleshoot devices with dsregcmd](https://learn.microsoft.com/en-us/entra/identity/devices/troubleshoot-device-dsregcmd)
+
