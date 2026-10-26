@@ -12,23 +12,23 @@ This followed earlier lab work covering tenant setup, group management, Windows 
 
 **Evidence 01** — Screenshot from this configuration stage.
 
-![Day 8 evidence 01](../Day08-01.png)
+![Day 8 evidence 01](Day08-01.png)
 
 **Evidence 02** — Screenshot from this configuration stage.
 
-![Day 8 evidence 02](../Day08-02.png)
+![Day 8 evidence 02](Day08-02.png)
 
 **Evidence 03** — Screenshot from this configuration stage.
 
-![Day 8 evidence 03](../Day08-03.png)
+![Day 8 evidence 03](Day08-03.png)
 
 **Evidence 04** — Screenshot from this configuration stage.
 
-![Day 8 evidence 04](../Day08-04.png)
+![Day 8 evidence 04](Day08-04.png)
 
 **Evidence 05** — Screenshot from this configuration stage.
 
-![Day 8 evidence 05](../Day08-05.png)
+![Day 8 evidence 05](Day08-05.png)
 
 ## 2. Creating the Windows compliance policy
 
@@ -38,31 +38,31 @@ I named the policy **`WIN11-Compliance-Policy-Pilot`** and described its purpose
 
 **Evidence 06** — Screenshot from this configuration stage.
 
-![Day 8 evidence 06](../Day08-06.png)
+![Day 8 evidence 06](Day08-06.png)
 
 **Evidence 07** — Screenshot from this configuration stage.
 
-![Day 8 evidence 07](../Day08-07.png)
+![Day 8 evidence 07](Day08-07.png)
 
 **Evidence 08** — Screenshot from this configuration stage.
 
-![Day 8 evidence 08](../Day08-08.png)
+![Day 8 evidence 08](Day08-08.png)
 
 **Evidence 09** — Screenshot from this configuration stage.
 
-![Day 8 evidence 09](../Day08-09.png)
+![Day 8 evidence 09](Day08-09.png)
 
 **Evidence 10** — Screenshot from this configuration stage.
 
-![Day 8 evidence 10](../Day08-10.png)
+![Day 8 evidence 10](Day08-10.png)
 
 **Evidence 11** — Screenshot from this configuration stage.
 
-![Day 8 evidence 11](../Day08-11.png)
+![Day 8 evidence 11](Day08-11.png)
 
 **Evidence 12** — Screenshot from this configuration stage.
 
-![Day 8 evidence 12](../Day08-12.png)
+![Day 8 evidence 12](Day08-12.png)
 
 ## 3. Device health: encryption and boot integrity
 
@@ -74,27 +74,27 @@ The Device Health section establishes baseline checks for core Windows protectio
 
 **Evidence 13** — Screenshot from this configuration stage.
 
-![Day 8 evidence 13](../Day08-13.png)
+![Day 8 evidence 13](Day08-13.png)
 
 **Evidence 14** — Screenshot from this configuration stage.
 
-![Day 8 evidence 14](../Day08-14.png)
+![Day 8 evidence 14](Day08-14.png)
 
 **Evidence 15** — Screenshot from this configuration stage.
 
-![Day 8 evidence 15](../Day08-15.png)
+![Day 8 evidence 15](Day08-15.png)
 
 **Evidence 16** — Screenshot from this configuration stage.
 
-![Day 8 evidence 16](../Day08-16.png)
+![Day 8 evidence 16](Day08-16.png)
 
 **Evidence 17** — Screenshot from this configuration stage.
 
-![Day 8 evidence 17](../Day08-17.png)
+![Day 8 evidence 17](Day08-17.png)
 
 **Evidence 18** — Screenshot from this configuration stage.
 
-![Day 8 evidence 18](../Day08-18.png)
+![Day 8 evidence 18](Day08-18.png)
 
 ## 4. Password and session security
 
@@ -106,35 +106,35 @@ Some Windows compliance settings have legacy or mobile-device-specific applicabi
 
 **Evidence 19** — Screenshot from this configuration stage.
 
-![Day 8 evidence 19](../Day08-19.png)
+![Day 8 evidence 19](Day08-19.png)
 
 **Evidence 20** — Screenshot from this configuration stage.
 
-![Day 8 evidence 20](../Day08-20.png)
+![Day 8 evidence 20](Day08-20.png)
 
 **Evidence 21** — Screenshot from this configuration stage.
 
-![Day 8 evidence 21](../Day08-21.png)
+![Day 8 evidence 21](Day08-21.png)
 
 **Evidence 22** — Screenshot from this configuration stage.
 
-![Day 8 evidence 22](../Day08-22.png)
+![Day 8 evidence 22](Day08-22.png)
 
 **Evidence 23** — Screenshot from this configuration stage.
 
-![Day 8 evidence 23](../Day08-23.png)
+![Day 8 evidence 23](Day08-23.png)
 
 **Evidence 24** — Screenshot from this configuration stage.
 
-![Day 8 evidence 24](../Day08-24.png)
+![Day 8 evidence 24](Day08-24.png)
 
 **Evidence 25** — Screenshot from this configuration stage.
 
-![Day 8 evidence 25](../Day08-25.png)
+![Day 8 evidence 25](Day08-25.png)
 
 **Evidence 26** — Screenshot from this configuration stage.
 
-![Day 8 evidence 26](../Day08-26.png)
+![Day 8 evidence 26](Day08-26.png)
 
 ## 5. Endpoint protection and operating-system security
 
@@ -146,35 +146,35 @@ These requirements are intended to produce a more complete endpoint-health asses
 
 **Evidence 27** — Screenshot from this configuration stage.
 
-![Day 8 evidence 27](../Day08-27.png)
+![Day 8 evidence 27](Day08-27.png)
 
 **Evidence 28** — Screenshot from this configuration stage.
 
-![Day 8 evidence 28](../Day08-28.png)
+![Day 8 evidence 28](Day08-28.png)
 
 **Evidence 29** — Screenshot from this configuration stage.
 
-![Day 8 evidence 29](../Day08-29.png)
+![Day 8 evidence 29](Day08-29.png)
 
 **Evidence 30** — Screenshot from this configuration stage.
 
-![Day 8 evidence 30](../Day08-30.png)
+![Day 8 evidence 30](Day08-30.png)
 
 **Evidence 31** — Screenshot from this configuration stage.
 
-![Day 8 evidence 31](../Day08-31.png)
+![Day 8 evidence 31](Day08-31.png)
 
 **Evidence 32** — Screenshot from this configuration stage.
 
-![Day 8 evidence 32](../Day08-32.png)
+![Day 8 evidence 32](Day08-32.png)
 
 **Evidence 33** — Screenshot from this configuration stage.
 
-![Day 8 evidence 33](../Day08-33.png)
+![Day 8 evidence 33](Day08-33.png)
 
 **Evidence 34** — Screenshot from this configuration stage.
 
-![Day 8 evidence 34](../Day08-34.png)
+![Day 8 evidence 34](Day08-34.png)
 
 ## 6. Microsoft Defender for Endpoint and WSL
 
@@ -184,27 +184,27 @@ I also configured **Windows Subsystem for Linux (WSL)** compliance requirements 
 
 **Evidence 35** — Screenshot from this configuration stage.
 
-![Day 8 evidence 35](../Day08-35.png)
+![Day 8 evidence 35](Day08-35.png)
 
 **Evidence 36** — Screenshot from this configuration stage.
 
-![Day 8 evidence 36](../Day08-36.png)
+![Day 8 evidence 36](Day08-36.png)
 
 **Evidence 37** — Screenshot from this configuration stage.
 
-![Day 8 evidence 37](../Day08-37.png)
+![Day 8 evidence 37](Day08-37.png)
 
 **Evidence 38** — Screenshot from this configuration stage.
 
-![Day 8 evidence 38](../Day08-38.png)
+![Day 8 evidence 38](Day08-38.png)
 
 **Evidence 39** — Screenshot from this configuration stage.
 
-![Day 8 evidence 39](../Day08-39.png)
+![Day 8 evidence 39](Day08-39.png)
 
 **Evidence 40** — Screenshot from this configuration stage.
 
-![Day 8 evidence 40](../Day08-40.png)
+![Day 8 evidence 40](Day08-40.png)
 
 ## 7. Actions for noncompliance and notification
 
@@ -216,31 +216,31 @@ This stage highlights that compliance management is not only about detecting a p
 
 **Evidence 41** — Screenshot from this configuration stage.
 
-![Day 8 evidence 41](../Day08-41.png)
+![Day 8 evidence 41](Day08-41.png)
 
 **Evidence 42** — Screenshot from this configuration stage.
 
-![Day 8 evidence 42](../Day08-42.png)
+![Day 8 evidence 42](Day08-42.png)
 
 **Evidence 43** — Screenshot from this configuration stage.
 
-![Day 8 evidence 43](../Day08-43.png)
+![Day 8 evidence 43](Day08-43.png)
 
 **Evidence 44** — Screenshot from this configuration stage.
 
-![Day 8 evidence 44](../Day08-44.png)
+![Day 8 evidence 44](Day08-44.png)
 
 **Evidence 45** — Screenshot from this configuration stage.
 
-![Day 8 evidence 45](../Day08-45.png)
+![Day 8 evidence 45](Day08-45.png)
 
 **Evidence 46** — Screenshot from this configuration stage.
 
-![Day 8 evidence 46](../Day08-46.png)
+![Day 8 evidence 46](Day08-46.png)
 
 **Evidence 47** — Screenshot from this configuration stage.
 
-![Day 8 evidence 47](../Day08-47.png)
+![Day 8 evidence 47](Day08-47.png)
 
 ## 8. Pilot-group targeting and policy review
 
@@ -252,27 +252,27 @@ The screenshots document the assignment workflow and final review of the policy 
 
 **Evidence 48** — Screenshot from this configuration stage.
 
-![Day 8 evidence 48](../Day08-48.png)
+![Day 8 evidence 48](Day08-48.png)
 
 **Evidence 49** — Screenshot from this configuration stage.
 
-![Day 8 evidence 49](../Day08-49.png)
+![Day 8 evidence 49](Day08-49.png)
 
 **Evidence 50** — Screenshot from this configuration stage.
 
-![Day 8 evidence 50](../Day08-50.png)
+![Day 8 evidence 50](Day08-50.png)
 
 **Evidence 51** — Screenshot from this configuration stage.
 
-![Day 8 evidence 51](../Day08-51.png)
+![Day 8 evidence 51](Day08-51.png)
 
 **Evidence 52** — Screenshot from this configuration stage.
 
-![Day 8 evidence 52](../Day08-52.png)
+![Day 8 evidence 52](Day08-52.png)
 
 **Evidence 53** — Screenshot from this configuration stage.
 
-![Day 8 evidence 53](../Day08-53.png)
+![Day 8 evidence 53](Day08-53.png)
 
 ## 9. Creation, monitoring and findings
 
@@ -284,15 +284,15 @@ This is evidence that the policy exists and its monitoring view is accessible, *
 
 **Evidence 54** — Screenshot from this configuration stage.
 
-![Day 8 evidence 54](../Day08-54.png)
+![Day 8 evidence 54](Day08-54.png)
 
 **Evidence 55** — Screenshot from this configuration stage.
 
-![Day 8 evidence 55](../Day08-55.png)
+![Day 8 evidence 55](Day08-55.png)
 
 **Evidence 56** — Screenshot from this configuration stage.
 
-![Day 8 evidence 56](../Day08-56.png)
+![Day 8 evidence 56](Day08-56.png)
 
 ## Conclusion
 
